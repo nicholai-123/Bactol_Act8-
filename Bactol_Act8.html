@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06152f">
+<title>MLBB // Legends of Dawn</title>
+<style>
+:root{--navy:#06152f;--blue:#087cf0;--cyan:#69e3ff;--ice:#dff7ff;--muted:#a7bfdc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:#f5fbff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 75% 8%,#087cf02b,transparent 35%),radial-gradient(ellipse at 10% 50%,#00d5ff12,transparent 32%);z-index:-1}
+a{color:inherit;text-decoration:none}
+header{height:76px;padding:0 clamp(20px,6vw,88px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #9edcff24;background:#06152fe8;position:sticky;top:0;z-index:10;backdrop-filter:blur(14px)}
+.brand{font-weight:950;letter-spacing:1.5px;font-size:1.1rem}.brand span{color:var(--cyan)}
+nav{display:flex;gap:30px;font-size:.88rem;color:#c3d9f3}nav a:hover{color:var(--cyan)}
+.menu{display:none;background:none;border:1px solid #4bbfff66;border-radius:9px;color:white;padding:8px 11px}
+.hero{min-height:650px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;padding:70px clamp(20px,8vw,120px);overflow:hidden;position:relative}
+.kicker{display:inline-flex;gap:9px;align-items:center;color:var(--cyan);font-size:.76rem;letter-spacing:3px;font-weight:800;text-transform:uppercase}
+.kicker:before{content:"";width:26px;height:2px;background:var(--cyan)}
+h1{font-size:clamp(3.2rem,7.4vw,7rem);line-height:.91;letter-spacing:-.065em;margin:24px 0}
+h1 span{display:block;color:transparent;-webkit-text-stroke:1px #72dfff;background:linear-gradient(100deg,#dffaff,#48b8ff 65%,#527eff);background-clip:text;-webkit-background-clip:text}
+.lead{color:#b9cde5;line-height:1.8;max-width:540px;font-size:1.03rem}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:8px;font-weight:800;font-size:.88rem;letter-spacing:.3px;transition:.2s}
+.primary{background:linear-gradient(110deg,#087cf0,#25c7ff);box-shadow:0 8px 30px #0788ff40;color:white}.primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px #0788ff70}
+.secondary{border:1px solid #85d9ff66;background:#ffffff08}.secondary:hover{background:#ffffff14}
+.art{min-height:440px;position:relative;display:grid;place-items:center}
+.orb{width:min(36vw,430px);aspect-ratio:1;border-radius:50%;position:absolute;background:radial-gradient(circle,#1aa7ff35 0,#0b4ebd24 45%,transparent 70%);border:1px solid #7de5ff26;box-shadow:0 0 90px #008cff22,inset 0 0 65px #008cff19}
+.ring{position:absolute;width:min(32vw,370px);aspect-ratio:1;border:1px solid #70dfff42;border-radius:50%;transform:rotateX(68deg) rotate(-25deg)}
+.ring:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 20px var(--cyan);top:20%;left:10%}
+.emblem{position:relative;font-size:clamp(8rem,22vw,17rem);filter:drop-shadow(0 0 24px #129dff88);animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-15px) rotate(3deg)}}
+.art-label{position:absolute;bottom:5%;right:0;border:1px solid #8fe5ff55;background:#06152fcc;padding:14px 18px;border-radius:8px;backdrop-filter:blur(10px);font-size:.75rem;letter-spacing:2px;color:#b9eaff}
+section{padding:80px clamp(20px,8vw,120px)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:32px}
+.eyebrow{color:var(--cyan);font-size:.72rem;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+h2{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em;margin:10px 0 0}
+.section-copy{max-width:390px;color:var(--muted);line-height:1.7;font-size:.9rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border:1px solid #86d9ff2c;background:linear-gradient(145deg,#102b50c9,#07172ed9);border-radius:14px;overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-6px);border-color:#4ac9ff91;box-shadow:0 16px 45px #008cff1a}
+.card-art{height:220px;display:grid;place-items:center;font-size:5.5rem;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 40%,#167fe75c,transparent 60%),linear-gradient(135deg,#102c52,#071326)}
+.card-art:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,#07152b)}
+.card-art span{filter:drop-shadow(0 0 18px #36baff80);transition:.3s}.card:hover .card-art span{transform:scale(1.08)}
+.card-body{padding:22px}.role{color:var(--cyan);font-size:.67rem;letter-spacing:2px;font-weight:900;text-transform:uppercase}
+h3{margin:8px 0;font-size:1.35rem}.card p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:0}
+.chronicle{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center;background:linear-gradient(110deg,#0b2b50aa,#07172c55);border-block:1px solid #80d9ff20}
+.sigil{min-height:280px;border-radius:16px;border:1px solid #64d8ff3b;display:grid;place-items:center;background:radial-gradient(circle,#147fdd30,transparent 60%);font-size:8rem}
+.chronicle p{color:var(--muted);line-height:1.9}
+.stats{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap}.stat strong{display:block;font-size:1.55rem;color:#d8f7ff}.stat small{color:#8eaccb;letter-spacing:1px;font-size:.68rem;text-transform:uppercase}
+footer{padding:28px clamp(20px,8vw,120px);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#7897bb;font-size:.78rem;border-top:1px solid #9edcff1c}
+@media(max-width:760px){header{height:66px}nav{display:none;position:absolute;top:65px;left:0;right:0;padding:20px;background:#06152f;flex-direction:column;gap:20px;border-bottom:1px solid #7de5ff30}nav.open{display:flex}.menu{display:block}.hero{grid-template-columns:1fr;padding-top:68px;min-height:auto}.hero-copy{text-align:center}.kicker{justify-content:center}h1{font-size:clamp(3.5rem,16vw,6rem)}.lead{margin-inline:auto}.actions{justify-content:center}.art{min-height:310px}.orb{width:260px}.ring{width:230px}.emblem{font-size:10rem}.section-head{display:block}.section-copy{margin-top:15px}.cards{grid-template-columns:1fr}.card-art{height:190px}.chronicle{grid-template-columns:1fr;gap:28px}.sigil{min-height:220px;font-size:6rem}section{padding-block:62px}footer{padding-block:24px}}
+@media(min-width:761px) and (max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}.hero{padding-inline:5vw}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#home">⚔ MLBB <span>// DAWN</span></a>
+  <nav id="nav"><a href="#home">HOME</a><a href="#heroes">HEROES</a><a href="#lore">THE LORE</a></nav>
+  <button class="menu" aria-label="Toggle menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <div class="kicker">Legends never fall</div>
+    <h1>RISE OF <span>LEGENDS.</span></h1>
+    <p class="lead">Enter the Land of Dawn, where powerful heroes clash, epic plays are born, and every battle writes a new legend. Choose your path. Protect your team. Claim victory.</p>
+    <div class="actions"><a class="btn primary" href="#heroes">✦ EXPLORE HEROES</a><a class="btn secondary" href="#lore">DISCOVER THE LORE ↗</a></div>
+  </div>
+  <div class="art" aria-label="Blue fantasy emblem">
+    <div class="orb"></div><div class="ring"></div><div class="emblem">⚔️</div>
+    <div class="art-label">LAND OF DAWN · EST. LEGENDS</div>
+  </div>
+</section>
+<section id="heroes">
+  <div class="section-head"><div><div class="eyebrow">Choose your champion</div><h2>HERO SPOTLIGHT</h2></div><p class="section-copy">Every role has a purpose. Find your playstyle and become the difference between defeat and victory.</p></div>
+  <div class="cards">
+    <article class="card"><div class="card-art"><span>🗡️</span></div><div class="card-body"><div class="role">Assassin · Burst</div><h3>The Shadow Blade</h3><p>Strike from the darkness, move with precision, and eliminate high-priority targets before they can react.</p></div></article>
+    <article class="card"><div class="card-art"><span>🛡️</span></div><div class="card-body"><div class="role">Tank · Frontline</div><h3>The Iron Guardian</h3><p>Stand strong for your squad, absorb the pressure, and create the opening your team needs.</p></div></article>
+    <article class="card"><div class="card-art"><span>🔮</span></div><div class="card-body"><div class="role">Mage · Magic</div><h3>The Arcane Star</h3><p>Control the battlefield with powerful spells, clever positioning, and devastating team-fight magic.</p></div></article>
+  </div>
+</section>
+<section class="chronicle" id="lore">
+  <div class="sigil">✧</div>
+  <div><div class="eyebrow">Beyond the battlefield</div><h2>THE LAND OF DAWN</h2><p>In a world shaped by ancient power and rival kingdoms, heroes rise from every corner of the Land of Dawn. Some fight for honor, others for freedom—but legends are made together. Rally your allies, master your role, and let your story begin.</p><div class="stats"><div class="stat"><strong>5v5</strong><small>Classic battle</small></div><div class="stat"><strong>1 TEAM</strong><small>One objective</small></div><div class="stat"><strong>∞</strong><small>Ways to play</small></div></div></div>
+</section>
+</main>
+<footer><span>⚔ MLBB // RISE OF LEGENDS</span><span>Fan-made concept · Not affiliated with Moonton</span></footer>
+<script>
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+</script>
+</body>
+</html>
